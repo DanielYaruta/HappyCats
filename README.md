@@ -7,6 +7,10 @@
 
 [**🔗 Демо на GitHub Pages**](https://danielyaruta.github.io/HappyCats/)
 
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+
 </div>
 
 ---
@@ -24,14 +28,8 @@
 - 📱 Адаптивная вёрстка — фон не искажается ни на телефоне, ни на широком мониторе
 - ⚡️ Без зависимостей — только HTML, CSS и vanilla JavaScript
 
-## Технологии
-
-- HTML / CSS — переменные, `aspect-ratio`, медиа-запросы, `background-clip: text`
-- Vanilla JavaScript — без зависимостей, один IIFE-модуль
-- Шрифты — Baloo 2, Nunito (Google Fonts)
-
 ---
 
 <div align="center">
-Сделано с любовью для котят, которые ищут дом!
+<img width="1402" height="1122" alt="Cats" src="https://github.com/user-attachments/assets/fff95ab5-d2ea-45c4-a3ee-0c631562060e" />
 </div>
