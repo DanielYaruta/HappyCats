@@ -69,34 +69,57 @@ html {
 
 body {
   margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background-color: var(--color-bg);
   font-family: var(--font-body);
   color: var(--color-text);
-  transition: color var(--transition-theme);
+  transition: color var(--transition-theme),
+    background-color var(--transition-theme);
   -webkit-font-smoothing: antialiased;
 }
 
+/*
+   Картинка фона — цельная сцена 1024×1536 (соотношение 2:3, верх
+   плавно переходит в низ), поэтому её нельзя резать на два
+   изображения или растягивать через cover — это либо обрежет
+   сюжетные детали (морды котят, забор), либо порвёт переход.
+
+   Решение: .page всегда сохраняет родное соотношение сторон
+   картинки и вписывается в экран целиком через background-size:
+   contain — сцена видна без обрезки на любых пропорциях экрана,
+   а пустые области (если появляются) закрашиваются --color-bg,
+   которая совпадает по тону с краями самой картинки.
+
+   На широких экранах блок упирается в 100% ширины (аспект сам
+   определяет высоту). На узких и вытянутых мобильных экранах,
+   где ширина почти всегда заметно меньше высоты, блок упирается
+   в высоту 100vh, а аспект сужает его ширину — так сцена
+   умещается по высоте без обрезки, лишь немного теряя в ширине. */
 .page {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: min(100%, calc(100vh * 1024 / 1536));
+  max-height: 100vh;
   aspect-ratio: 1024 / 1536;
+  margin: 0 auto;
+  background-color: var(--color-bg);
   background-image: var(--bg-page);
-  background-size: cover;
-  background-position: center top;
+  background-size: contain;
+  background-position: center;
   background-repeat: no-repeat;
+  transition: background-color var(--transition-theme);
 }
 
-/* На очень узких/широких экранах одного aspect-ratio мало —
-   страховка, чтобы блок не был ниже двух экранов (100vh + 100vh) */
+/* На экранах шире картинки, но при этом невысоких (например,
+   ландшафтная ориентация телефона/планшета), ограничение по высоте
+   экрана сжало бы сцену слишком сильно — даём странице скроллиться
+   вместо сжатия и убираем привязку ширины к высоте вьюпорта. */
 @media (max-aspect-ratio: 2/3) {
   .page {
-    aspect-ratio: auto;
-    min-height: 200vh;
-  }
-
-  .hero,
-  .form-section {
-    height: 100vh;
+    width: 100%;
+    max-height: none;
   }
 }
 
