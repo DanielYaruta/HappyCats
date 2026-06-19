@@ -135,6 +135,7 @@
       emailInput,
       emailError,
       successMessage,
+      purrSound,
     } = refs;
 
     nameInput.addEventListener("blur", () =>
@@ -158,6 +159,12 @@
       // Пока — просто показываем заглушку успеха.
       form.hidden = true;
       successMessage.hidden = false;
+
+      if (purrSound) {
+        purrSound.currentTime = 0;
+        purrSound.play().catch(() => {
+        });
+      }
     });
   }
 
@@ -180,6 +187,7 @@
       emailInput: document.getElementById("email"),
       emailError: document.getElementById("email-error"),
       successMessage: document.getElementById("successMessage"),
+      purrSound: document.getElementById("purrSound"),
     });
   });
 })();
