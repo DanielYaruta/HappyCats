@@ -28,6 +28,8 @@
   --radius-field: 14px;
 
   --transition-theme: 0.45s ease;
+
+  --bg-page: url("images/page_background.jpg");
 }
 
 html[data-theme="dark"] {
@@ -46,6 +48,8 @@ html[data-theme="dark"] {
 
   --shadow-card: 0 24px 60px -20px rgba(0, 0, 0, 0.6);
   --shadow-toggle: 0 6px 18px -4px rgba(0, 0, 0, 0.6);
+
+  --bg-page: url("images/page_background_night.jpg");
 
   color-scheme: dark;
 }
@@ -67,11 +71,6 @@ body {
   margin: 0;
   font-family: var(--font-body);
   color: var(--color-text);
-  background-image: url("images/page_background.jpg");
-  background-size: 100% 100%;
-  background-position: center top;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
   transition: color var(--transition-theme);
   -webkit-font-smoothing: antialiased;
 }
@@ -79,12 +78,32 @@ body {
 .page {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  aspect-ratio: 1024 / 1536;
+  background-image: var(--bg-page);
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+
+/* На очень узких/широких экранах одного aspect-ratio мало —
+   страховка, чтобы блок не был ниже двух экранов (100vh + 100vh) */
+@media (max-aspect-ratio: 2/3) {
+  .page {
+    aspect-ratio: auto;
+    min-height: 200vh;
+  }
+
+  .hero,
+  .form-section {
+    height: 100vh;
+  }
 }
 
 /* --- первый экран: лого-баннер + призыв к скроллу --- */
 
 .hero {
-  min-height: 100vh;
+  height: 50%;
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -136,7 +155,7 @@ body {
 /* --- второй экран: фон с котятами на траве + карточка формы --- */
 
 .form-section {
-  min-height: 100vh;
+  height: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
