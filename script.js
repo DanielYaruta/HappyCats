@@ -11,8 +11,8 @@
        1. ВАЛИДАЦИЯ ПОЛЕЙ
        ----------------------------------------------------------- */
 
-  const NAME_REGEX = /^[А-Яа-яЁё]+(?:[\s-][А-Яа-яЁё]+)*$/;
-  const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*\.[a-zA-Z]{2,}$/;
+  const NAME_REGEX = /^[А-Яа-яЁё\s-]+$/;
+  const EMAIL_REGEX = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]{2,}$/;
 
   function setFieldState(input, errorElement, message) {
     if (message) {
