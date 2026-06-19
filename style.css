@@ -201,10 +201,20 @@ body {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-accent-strong);
-  background: var(--color-accent-soft);
-  padding: 5px 12px;
+  background: linear-gradient(
+    135deg,
+    var(--color-accent-soft) 0%,
+    #fff3ef 55%,
+    var(--color-card) 100%
+  );
+  border: 1px solid var(--color-accent);
+  box-shadow: 0 8px 18px -6px rgba(240, 106, 86, 0.55);
+  padding: 6px 14px;
   border-radius: 999px;
   margin-bottom: 16px;
+  transition: background var(--transition-theme),
+    border-color var(--transition-theme),
+    box-shadow var(--transition-theme);
 }
 
 .card__title {
