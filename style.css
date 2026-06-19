@@ -1,0 +1,442 @@
+/* ===========================================================
+   Цветовые и прочие переменные.
+   Тема переключается через атрибут data-theme на <html>.
+   =========================================================== */
+
+:root {
+  /* --- светлая тема (по умолчанию) --- */
+  --color-bg: #fff1ec;
+  --color-bg-soft: #ffe4da;
+  --color-card: #ffffff;
+  --color-text: #5b4744;
+  --color-text-soft: #8a7472;
+  --color-accent: #ff8b7b;
+  --color-accent-strong: #f06a56;
+  --color-accent-soft: #ffd9ce;
+  --color-border: #f2d9d0;
+  --color-success-bg: #fff6f0;
+  --color-error: #e2574c;
+  --color-paw: #5b4744;
+
+  --shadow-card: 0 24px 60px -20px rgba(91, 71, 68, 0.25);
+  --shadow-toggle: 0 6px 16px -4px rgba(91, 71, 68, 0.35);
+
+  --font-display: "Baloo 2", system-ui, sans-serif;
+  --font-body: "Nunito", system-ui, sans-serif;
+
+  --radius-card: 28px;
+  --radius-field: 14px;
+
+  --transition-theme: 0.45s ease;
+}
+
+html[data-theme="dark"] {
+  --color-bg: #241a18;
+  --color-bg-soft: #2f2220;
+  --color-card: #2c2120;
+  --color-text: #f6e9e4;
+  --color-text-soft: #c2a8a3;
+  --color-accent: #ff8b7b;
+  --color-accent-strong: #ffa394;
+  --color-accent-soft: #4a3431;
+  --color-border: #46322f;
+  --color-success-bg: #322523;
+  --color-error: #ff8d83;
+  --color-paw: #f6e9e4;
+
+  --shadow-card: 0 24px 60px -20px rgba(0, 0, 0, 0.6);
+  --shadow-toggle: 0 6px 18px -4px rgba(0, 0, 0, 0.6);
+
+  color-scheme: dark;
+}
+/* ===========================================================
+       Базовый сброс и общие стили страницы
+       =========================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background-image: url("images/page_background.jpg");
+  background-size: 100% 100%;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  transition: color var(--transition-theme);
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- первый экран: лого-баннер + призыв к скроллу --- */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.hero__inner {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 48px;
+}
+
+.hero__scroll {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  font-family: var(--font-body);
+  padding: 10px 18px;
+}
+
+.hero__scroll-text {
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
+}
+
+.hero__scroll-arrow {
+  width: 30px;
+  height: 30px;
+  animation: hero-bounce 1.8s ease-in-out infinite;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.45));
+}
+
+@keyframes hero-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+/* --- второй экран: фон с котятами на траве + карточка формы --- */
+
+.form-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 20px;
+}
+
+/* --- карточка формы --- */
+
+.card {
+  width: 100%;
+  max-width: 440px;
+  background: var(--color-card);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 40px 36px 36px;
+  position: relative;
+  transition: background-color var(--transition-theme),
+    box-shadow var(--transition-theme);
+}
+
+.card__intro {
+  margin-bottom: 28px;
+}
+
+.card__eyebrow {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent-strong);
+  background: var(--color-accent-soft);
+  padding: 5px 12px;
+  border-radius: 999px;
+  margin-bottom: 16px;
+}
+
+.card__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.65rem;
+  line-height: 1.28;
+  margin: 0 0 12px;
+  color: var(--color-text);
+}
+
+.card__subtitle {
+  font-size: 0.96rem;
+  line-height: 1.55;
+  color: var(--color-text-soft);
+  margin: 0;
+}
+
+/* Видимый фокус для доступности (на случай переопределений) */
+:focus-visible {
+  outline: 2px solid var(--color-accent-strong);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+/* ===========================================================
+       Форма, поля, кнопка отправки, сообщение об успехе
+       =========================================================== */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field__label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.field__input {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-text);
+  background: var(--color-bg);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-field);
+  padding: 12px 16px;
+  transition: border-color 0.2s ease, background-color var(--transition-theme);
+}
+
+.field__input::placeholder {
+  color: var(--color-text-soft);
+  opacity: 0.7;
+}
+
+.field__input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.field__input.is-invalid {
+  border-color: var(--color-error);
+}
+
+.field__error {
+  display: block;
+  min-height: 1.1em;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-error);
+}
+
+.form__submit {
+  margin-top: 6px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.02rem;
+  color: #fff;
+  background: linear-gradient(
+    135deg,
+    var(--color-accent) 0%,
+    var(--color-accent-strong) 100%
+  );
+  border: none;
+  border-radius: var(--radius-field);
+  padding: 14px 20px;
+  cursor: pointer;
+  box-shadow: 0 14px 24px -10px rgba(240, 106, 86, 0.55);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.form__submit:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 28px -10px rgba(240, 106, 86, 0.6);
+}
+
+.form__submit:active {
+  transform: translateY(0);
+  box-shadow: 0 10px 18px -10px rgba(240, 106, 86, 0.55);
+}
+
+/* --- сообщение об успехе --- */
+
+.success {
+  text-align: center;
+  background: var(--color-success-bg);
+  border-radius: var(--radius-field);
+  padding: 28px 20px 24px;
+  margin-top: 4px;
+}
+
+.success__paw {
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+}
+
+.success__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin: 0 0 6px;
+  color: var(--color-text);
+}
+
+.success__text {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--color-text-soft);
+  margin: 0;
+}
+
+@media (max-width: 380px) {
+  .card {
+    padding: 32px 22px 28px;
+  }
+
+  .card__title {
+    font-size: 1.42rem;
+  }
+
+  .hero__inner {
+    padding-bottom: 28px;
+  }
+
+  .hero__scroll-text {
+    font-size: 0.84rem;
+  }
+}
+/* ===========================================================
+       Переключатель темы: круглая кнопка с лапкой кота.
+       При клике лапка "оставляет след" — короткая анимация
+       расходящегося отпечатка лапки.
+       =========================================================== */
+
+.theme-toggle {
+  position: fixed;
+  top: 22px;
+  right: 22px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  background: var(--color-card);
+  box-shadow: var(--shadow-toggle);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: background-color var(--transition-theme), transform 0.2s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.06);
+}
+
+.theme-toggle:active {
+  transform: scale(0.96);
+}
+
+.theme-toggle__paw {
+  width: 28px;
+  height: 28px;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle .paw-pad,
+.theme-toggle .paw-toe {
+  fill: var(--color-paw);
+  transition: fill var(--transition-theme);
+}
+
+.theme-toggle:hover .theme-toggle__paw {
+  transform: rotate(-8deg) scale(1.05);
+}
+
+/* След от лапки: расширяющееся кольцо-отпечаток при переключении */
+.theme-toggle__print {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--color-accent-soft);
+  transform: scale(0);
+  opacity: 0;
+  z-index: 1;
+}
+
+.theme-toggle.is-stamping .theme-toggle__print {
+  animation: paw-stamp 0.5s ease-out;
+}
+
+.theme-toggle.is-stamping .theme-toggle__paw {
+  animation: paw-press 0.5s ease-out;
+}
+
+@keyframes paw-stamp {
+  0% {
+    transform: scale(0.3);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+@keyframes paw-press {
+  0% {
+    transform: scale(1);
+  }
+  35% {
+    transform: scale(0.8);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 380px) {
+  .theme-toggle {
+    top: 14px;
+    right: 14px;
+    width: 48px;
+    height: 48px;
+  }
+
+  .theme-toggle__paw {
+    width: 24px;
+    height: 24px;
+  }
+}

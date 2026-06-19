@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HappyCats — узнай первым о новых котятах</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <button
+      id="themeToggle"
+      class="theme-toggle"
+      type="button"
+      aria-label="Переключить тему оформления"
+      aria-pressed="false"
+    >
+      <span class="theme-toggle__print" aria-hidden="true"></span>
+      <svg
+        class="theme-toggle__paw"
+        viewBox="0 0 64 64"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <ellipse class="paw-pad" cx="32" cy="40" rx="16" ry="13" />
+        <ellipse
+          class="paw-toe"
+          cx="14"
+          cy="20"
+          rx="6.5"
+          ry="8"
+          transform="rotate(-18 14 20)"
+        />
+        <ellipse
+          class="paw-toe"
+          cx="27"
+          cy="11"
+          rx="6.5"
+          ry="8.5"
+          transform="rotate(-6 27 11)"
+        />
+        <ellipse
+          class="paw-toe"
+          cx="41"
+          cy="11"
+          rx="6.5"
+          ry="8.5"
+          transform="rotate(6 41 11)"
+        />
+        <ellipse
+          class="paw-toe"
+          cx="53"
+          cy="20"
+          rx="6.5"
+          ry="8"
+          transform="rotate(18 53 20)"
+        />
+      </svg>
+    </button>
+
+    <main class="page">
+      <section class="hero">
+        <div class="hero__inner">
+          <button class="hero__scroll" id="scrollDown" type="button">
+            <span class="hero__scroll-text">Прокрутите вниз, чтобы узнать первыми</span>
+            <svg
+              class="hero__scroll-arrow"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path
+                d="M12 4v15M12 19l-6-6M12 19l6-6"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      <section class="form-section" id="formSection">
+        <div class="card" aria-labelledby="formTitle">
+          <header class="card__intro">
+            <span class="card__eyebrow">приют HappyCats</span>
+            <h1 id="formTitle" class="card__title">
+              Котята скоро найдут дом.<br />Сообщим вам первыми.
+            </h1>
+            <p class="card__subtitle">
+              Оставьте имя и почту — напишем, как только в приюте появятся котята,
+              и расскажем, что делать дальше.
+            </p>
+          </header>
+
+          <form id="signupForm" class="form" novalidate>
+            <div class="field">
+              <label class="field__label" for="fullname">Ваше имя</label>
+              <input
+                class="field__input"
+                type="text"
+                id="fullname"
+                name="fullname"
+                placeholder="Например, Даниил"
+                autocomplete="name"
+              />
+              <span class="field__error" id="fullname-error" role="alert"></span>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="email">Электронная почта</label>
+              <input
+                class="field__input"
+                type="text"
+                id="email"
+                name="email"
+                placeholder="example@mail.com"
+                autocomplete="email"
+              />
+              <span class="field__error" id="email-error" role="alert"></span>
+            </div>
+
+            <button class="form__submit" type="submit">
+              <span>Сообщить о котятах</span>
+            </button>
+          </form>
+
+          <div class="success" id="successMessage" hidden>
+            <div class="success__paw" aria-hidden="true">🐾</div>
+            <p class="success__title">Спасибо!</p>
+            <p class="success__text">
+              Мы напишем вам на почту, как только в приюте появятся котята,
+              которые ищут дом.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
