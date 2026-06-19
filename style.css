@@ -193,28 +193,44 @@ body {
   margin-bottom: 28px;
 }
 
-.card__eyebrow {
-  display: inline-block;
-  font-family: var(--font-body);
-  font-weight: 800;
-  font-size: 0.72rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-accent-strong);
+.card__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.card__brand-paw {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.card__brand:hover .card__brand-paw {
+  transform: rotate(-12deg) scale(1.08);
+}
+
+.card__brand-pad,
+.card__brand-toe {
+  fill: var(--color-accent-strong);
+  transition: fill var(--transition-theme);
+}
+
+.card__brand-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 0.01em;
   background: linear-gradient(
     135deg,
-    var(--color-accent-soft) 0%,
-    #fff3ef 55%,
-    var(--color-card) 100%
+    var(--color-accent-strong) 0%,
+    var(--color-accent) 100%
   );
-  border: 1px solid var(--color-accent);
-  box-shadow: 0 8px 18px -6px rgba(240, 106, 86, 0.55);
-  padding: 6px 14px;
-  border-radius: 999px;
-  margin-bottom: 16px;
-  transition: background var(--transition-theme),
-    border-color var(--transition-theme),
-    box-shadow var(--transition-theme);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--color-accent-strong);
 }
 
 .card__title {
