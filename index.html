@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HappyCats</title>
+    <title>HappyCats — узнай первым о новых котятах</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -67,20 +67,45 @@
       <section class="hero">
         <div class="hero__inner">
           <button class="hero__scroll" id="scrollDown" type="button">
-            <span class="hero__scroll-text">Прокрутите вниз, чтобы узнать первыми</span>
+            <span class="hero__scroll-text">Смотри, кто ждёт внизу</span>
             <svg
               class="hero__scroll-arrow"
-              viewBox="0 0 24 24"
+              viewBox="0 0 64 64"
               xmlns="http://www.w3.org/2000/svg"
               aria-hidden="true"
             >
-              <path
-                d="M12 4v15M12 19l-6-6M12 19l6-6"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+              <ellipse class="hero__scroll-pad" cx="32" cy="40" rx="16" ry="13" />
+              <ellipse
+                class="hero__scroll-toe"
+                cx="14"
+                cy="20"
+                rx="6.5"
+                ry="8"
+                transform="rotate(-18 14 20)"
+              />
+              <ellipse
+                class="hero__scroll-toe"
+                cx="27"
+                cy="11"
+                rx="6.5"
+                ry="8.5"
+                transform="rotate(-6 27 11)"
+              />
+              <ellipse
+                class="hero__scroll-toe"
+                cx="41"
+                cy="11"
+                rx="6.5"
+                ry="8.5"
+                transform="rotate(6 41 11)"
+              />
+              <ellipse
+                class="hero__scroll-toe"
+                cx="53"
+                cy="20"
+                rx="6.5"
+                ry="8"
+                transform="rotate(18 53 20)"
               />
             </svg>
           </button>
