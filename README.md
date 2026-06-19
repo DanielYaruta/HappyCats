@@ -1,7 +1,7 @@
+<img width="1531" height="284" alt="HappyCatsTop" src="https://github.com/user-attachments/assets/9ea915dc-ee56-4243-81a2-a35304987b5d" />
+
 <div align="center">
-
-# 🐾 HappyCats
-
+  
 **Лендинг приюта для животных** — посетитель оставляет имя и почту,
 чтобы узнать первым, когда в приюте появятся котята, готовые к усыновлению.
 
